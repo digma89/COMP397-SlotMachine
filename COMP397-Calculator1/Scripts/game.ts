@@ -119,18 +119,12 @@ function gameLoop() {
     stats.end(); // end measuring
 }
 
-// Callback function that allows me to respond to button click events
-function pinkButtonClicked(event: createjs.MouseEvent) {
-    createjs.Sound.play("clicked");
-}
-
-// Callback functions that change the alpha transparency of the button
-
 
 // Our Main Game Function
 function main() {
 
     console.log("Game is Running");
+    //load the User interface
     createUI();
 
 }
