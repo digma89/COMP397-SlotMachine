@@ -24,7 +24,10 @@ var manifest = [
     { id: "Lemon", src: "assets/images/lemon.png" },
     { id: "Blank", src: "assets/images/blank.png" },
     { id: "Seven", src: "assets/images/seven.png" },
-    { id: "clicked", src: "assets/audio/clicked.wav" }
+    { id: "soundCoins", src: "assets/audio/coins.wav" },
+    { id: "soundJackpot", src: "assets/audio/jackpot.wav" },
+    { id: "soundSpin", src: "assets/audio/spin.wav" },
+    { id: "soundWin", src: "assets/audio/win.wav" }
 ];
 // Game Variables
 var playerMoney = 1000;
@@ -106,13 +109,6 @@ function pinkButtonClicked(event) {
 function main() {
     console.log("Game is Running");
     createUI();
-    /* helloLabel = new createjs.Text("Hello World!", "40px Consolas", "#000000");
-     helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
-     helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
-     helloLabel.x = 160;
-     helloLabel.y = 190;
-     stage.addChild(helloLabel);
-     */
 }
 //Function tu create all the user interface ********************************************************************
 function createUI() {
@@ -161,6 +157,8 @@ function createUI() {
 }
 //function to increase bet and display it **********************************************************************
 function addingPlayerBet100() {
+    //play sound
+    createjs.Sound.play("soundCoins");
     //increse bet
     playerBet += 100;
     if (playerBet > playerMoney) {
@@ -172,6 +170,8 @@ function addingPlayerBet100() {
     stage.addChild(playerBetDisplay);
 }
 function addingPlayerBet50() {
+    //play sound
+    createjs.Sound.play("soundCoins");
     //increse bet
     playerBet += 50;
     if (playerBet > playerMoney) {
@@ -183,6 +183,8 @@ function addingPlayerBet50() {
     stage.addChild(playerBetDisplay);
 }
 function addingPlayerBet10() {
+    //play sound
+    createjs.Sound.play("soundCoins");
     //increse bet
     playerBet += 10;
     if (playerBet > playerMoney) {
@@ -205,26 +207,32 @@ function spin() {
         alert("All bets must be a positive $ amount.");
     }
     else if (playerBet <= playerMoney) {
-        spinResult = Reels();
-        //remove row images
-        stage.removeChild(row1, row2, row3);
-        //add image in the row 1 
-        row1 = new createjs.Bitmap(assets.getResult(spinResult[0]));
-        row1.x = 96;
-        row1.y = 256;
-        stage.addChild(row1);
-        //add image in the row 2 
-        row2 = new createjs.Bitmap(assets.getResult(spinResult[1]));
-        row2.x = 212;
-        row2.y = 255;
-        stage.addChild(row2);
-        //add image in the row 3 
-        row3 = new createjs.Bitmap(assets.getResult(spinResult[2]));
-        row3.x = 327;
-        row3.y = 256;
-        stage.addChild(row3);
-        determineWinnings();
-        turn++;
+        //play sound
+        createjs.Sound.play("soundSpin");
+        //wait to finish the sound 
+        setTimeout(spinWait, 2000);
+        function spinWait() {
+            spinResult = Reels();
+            //remove row images
+            stage.removeChild(row1, row2, row3);
+            //add image in the row 1 
+            row1 = new createjs.Bitmap(assets.getResult(spinResult[0]));
+            row1.x = 96;
+            row1.y = 256;
+            stage.addChild(row1);
+            //add image in the row 2 
+            row2 = new createjs.Bitmap(assets.getResult(spinResult[1]));
+            row2.x = 212;
+            row2.y = 255;
+            stage.addChild(row2);
+            //add image in the row 3 
+            row3 = new createjs.Bitmap(assets.getResult(spinResult[2]));
+            row3.x = 327;
+            row3.y = 256;
+            stage.addChild(row3);
+            determineWinnings();
+            turn++;
+        }
     }
     else {
         alert("Please enter a valid bet amount");
@@ -344,6 +352,8 @@ function determineWinnings() {
 }
 /* Utility function to show a win message and increase player money */
 function showWinMessage() {
+    //play sound
+    createjs.Sound.play("soundWin");
     playerMoney += winnings;
     stage.removeChild(playerPayoutDisplay, playerMoneyDisplay, playerBetDisplay);
     //add Bet text  creating an object from the class Text
@@ -364,7 +374,9 @@ function checkJackPot() {
     /* compare two random values */
     var jackPotTry = Math.floor(Math.random() * 51 + 1);
     var jackPotWin = Math.floor(Math.random() * 51 + 1);
-    if (1) {
+    if (jackPotTry == jackPotWin) {
+        //play sound
+        createjs.Sound.play("soundJackpot");
         alert("You Won the $" + jackpot + " Jackpot!!");
         playerMoney += jackpot;
         jackpot = 1000;

@@ -59,6 +59,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\coins.wav" />
+    <Content Include="assets\audio\jackpot.wav" />
+    <Content Include="assets\audio\spin.wav" />
+    <Content Include="assets\audio\win.wav" />
     <Content Include="assets\images\banana.png" />
     <Content Include="assets\images\bar.png" />
     <Content Include="assets\images\btn10.png" />
@@ -82,7 +86,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\audio\clicked.wav" />
     <Content Include="css\main.css" />
     <Content Include="index.html" />
     <Content Include="assets\images\blank.png" />
