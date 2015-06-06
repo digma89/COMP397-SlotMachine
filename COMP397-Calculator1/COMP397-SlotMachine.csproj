@@ -59,25 +59,12 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\btn10.png" />
+    <Content Include="assets\images\btn100.png" />
+    <Content Include="assets\images\btn50.png" />
+    <Content Include="assets\images\btnOff.png" />
+    <Content Include="assets\images\btnReset.png" />
     <Content Include="assets\images\btnSpin.png" />
-    <Content Include="assets\images\calcContainer.png" />
-    <Content Include="assets\images\calculator.png" />
-    <Content Include="assets\images\divideButton.png" />
-    <Content Include="assets\images\eightButton.png" />
-    <Content Include="assets\images\equalsButton.png" />
-    <Content Include="assets\images\fiveButton.png" />
-    <Content Include="assets\images\fourButton.png" />
-    <Content Include="assets\images\minusButton.png" />
-    <Content Include="assets\images\multiplyButton.png" />
-    <Content Include="assets\images\nineButton.png" />
-    <Content Include="assets\images\oneButton.png" />
-    <Content Include="assets\images\plusButton.png" />
-    <Content Include="assets\images\sevenButton.png" />
-    <Content Include="assets\images\sixButton.png" />
-    <Content Include="assets\images\skin.png" />
-    <Content Include="assets\images\threeButton.png" />
-    <Content Include="assets\images\twoButton.png" />
-    <Content Include="assets\images\zeroButton.png" />
     <Content Include="assets\images\background.jpg" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">

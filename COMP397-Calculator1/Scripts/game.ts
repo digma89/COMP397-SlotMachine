@@ -14,8 +14,12 @@ var stats: Stats;
 
 var assets: createjs.LoadQueue;
 var manifest = [
-    { id: "plusButton", src: "assets/images/plusButton.png" },
     { id: "btnSpin", src: "assets/images/btnSpin.png" },
+    { id: "btnOff", src: "assets/images/btnOff.png" },
+    { id: "btnReset", src: "assets/images/btnReset.png" },
+    { id: "btn100", src: "assets/images/btn100.png" },
+    { id: "btn50", src: "assets/images/btn50.png" },
+    { id: "btn10", src: "assets/images/btn10.png" },
     { id: "clicked", src: "assets/audio/clicked.wav" }
 ];
 
@@ -28,6 +32,12 @@ var plusButton: objects.Button;
 // Game Objects
 var background: createjs.Bitmap;
 var btnSpin: objects.Button;
+var btnOff: objects.Button;
+var btnReset: objects.Button;
+var btn100: objects.Button;
+var btn50: objects.Button;
+var btn10: objects.Button;
+
 
 // Preloader Function
 function preload() {
@@ -97,9 +107,7 @@ function main() {
     helloLabel.y = 190;
     stage.addChild(helloLabel);
 
-    plusButton = new objects.Button(assets.getResult("plusButton"), 160, 270);
-    stage.addChild(plusButton);
-    plusButton.on("click", pinkButtonClicked);
+
 */
 }
 
@@ -113,4 +121,25 @@ function createUI() {
     stage.addChild(btnSpin);
     btnSpin.on("click", pinkButtonClicked);
 
+    btnOff = new objects.Button(assets.getResult("btnOff"), 382, 126, false);
+    stage.addChild(btnOff);
+    btnOff.on("click", closeWindow);
+
+    btnReset = new objects.Button(assets.getResult("btnReset"), 60, 125, false);
+    stage.addChild(btnReset);
+
+    btn100 = new objects.Button(assets.getResult("btn100"), 214, 441, false);
+    stage.addChild(btn100);
+
+    btn50 = new objects.Button(assets.getResult("btn50"), 147, 441, false);
+    stage.addChild(btn50);
+
+    btn10 = new objects.Button(assets.getResult("btn10"), 79, 441, false);
+    stage.addChild(btn10);
+
+}
+
+function closeWindow() {
+    window.open('', '_self', '');
+    window.close();
 }
