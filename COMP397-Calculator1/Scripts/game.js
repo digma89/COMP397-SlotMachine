@@ -27,10 +27,6 @@ var manifest = [
     { id: "clicked", src: "assets/audio/clicked.wav" }
 ];
 // Game Variables
-var helloLabel; // create a reference
-var playerMoneyDisplay;
-var playerBetDisplay;
-var playerPayoutDisplay;
 var playerMoney = 1000;
 var winnings = 0;
 var jackpot = 5000;
@@ -49,6 +45,11 @@ var bars = 0;
 var lemons = 0;
 var sevens = 0;
 var blanks = 0;
+//Game Text Objects
+var playerMoneyDisplay;
+var playerBetDisplay;
+var playerPayoutDisplay;
+var playerJackPotDisplay;
 // Game Objects
 var background;
 var btnSpin;
@@ -154,6 +155,9 @@ function createUI() {
     //add Bet text  creating an object from the class Text
     playerPayoutDisplay = new objects.Text(winnings.toString(), 353.5, 381);
     stage.addChild(playerPayoutDisplay);
+    //add Bet text  creating an object from the class Text
+    playerJackPotDisplay = new objects.Text(jackpot.toString(), 235.5, 155);
+    stage.addChild(playerJackPotDisplay);
 }
 //function to increase bet and display it **********************************************************************
 function addingPlayerBet100() {
@@ -203,9 +207,7 @@ function spin() {
     else if (playerBet <= playerMoney) {
         spinResult = Reels();
         //remove row images
-        stage.removeChild(row1);
-        stage.removeChild(row2);
-        stage.removeChild(row3);
+        stage.removeChild(row1, row2, row3);
         //add image in the row 1 
         row1 = new createjs.Bitmap(assets.getResult(spinResult[0]));
         row1.x = 96;
@@ -355,7 +357,24 @@ function showWinMessage() {
     //add Bet text  creating an object from the class Text
     playerBetDisplay = new objects.Text(playerBet.toString(), 238.5, 381);
     stage.addChild(playerBetDisplay);
-    //checkJackPot();
+    checkJackPot();
+}
+// Check to see if the player won the jackpot
+function checkJackPot() {
+    /* compare two random values */
+    var jackPotTry = Math.floor(Math.random() * 51 + 1);
+    var jackPotWin = Math.floor(Math.random() * 51 + 1);
+    if (1) {
+        alert("You Won the $" + jackpot + " Jackpot!!");
+        playerMoney += jackpot;
+        jackpot = 1000;
+        //show jackpot modified in screen
+        stage.removeChild(playerJackPotDisplay, playerMoneyDisplay);
+        playerJackPotDisplay = new objects.Text(jackpot.toString(), 235.5, 155);
+        stage.addChild(playerJackPotDisplay);
+        playerMoneyDisplay = new objects.Text(playerMoney.toString(), 124.5, 381);
+        stage.addChild(playerMoneyDisplay);
+    }
 }
 /* Utility function to show a loss message and reduce player money */
 function showLossMessage() {
