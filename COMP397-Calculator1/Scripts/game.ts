@@ -26,7 +26,17 @@ var manifest = [
 
 // Game Variables
 var helloLabel: createjs.Text; // create a reference
-var plusButton: objects.Button;
+var playerMoneyDisplay: createjs.Text;
+var playerMoney = 1000;
+var winnings = 0;
+var jackpot = 5000;
+var turn = 0;
+var playerBet = 0;
+var winNumber = 0;
+var lossNumber = 0;
+var spinResult;
+var fruits = "";
+var winRatio = 0;
 
 
 // Game Objects
@@ -99,16 +109,16 @@ function main() {
     console.log("Game is Running");
 
     createUI();
-/*
-    helloLabel = new createjs.Text("Hello World!", "40px Consolas", "#000000");
+
+   /* helloLabel = new createjs.Text("Hello World!", "40px Consolas", "#000000");
     helloLabel.regX = helloLabel.getMeasuredWidth() * 0.5;
     helloLabel.regY = helloLabel.getMeasuredHeight() * 0.5;
     helloLabel.x = 160;
     helloLabel.y = 190;
     stage.addChild(helloLabel);
+    */
 
 
-*/
 }
 
 //Function tu create all the user interface
@@ -136,6 +146,10 @@ function createUI() {
 
     btn10 = new objects.Button(assets.getResult("btn10"), 79, 441, false);
     stage.addChild(btn10);
+
+    playerMoneyDisplay = new objects.Text(playerMoney.toString(), 124, 381);
+    stage.addChild(playerMoneyDisplay);
+
 
 }
 
