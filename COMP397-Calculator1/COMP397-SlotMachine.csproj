@@ -59,6 +59,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\banana.png" />
+    <Content Include="assets\images\bar.png" />
     <Content Include="assets\images\btn10.png" />
     <Content Include="assets\images\btn100.png" />
     <Content Include="assets\images\btn50.png" />
@@ -66,6 +68,11 @@
     <Content Include="assets\images\btnReset.png" />
     <Content Include="assets\images\btnSpin.png" />
     <Content Include="assets\images\background.jpg" />
+    <Content Include="assets\images\cherry.png" />
+    <Content Include="assets\images\grape.png" />
+    <Content Include="assets\images\lemon.png" />
+    <Content Include="assets\images\orange.png" />
+    <Content Include="assets\images\seven.png" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -78,6 +85,7 @@
     <Content Include="assets\audio\clicked.wav" />
     <Content Include="css\main.css" />
     <Content Include="index.html" />
+    <Content Include="assets\images\blank.png" />
     <Content Include="Scripts\lib\easeljs-0.8.0.min.js" />
     <Content Include="Scripts\lib\preloadjs-0.6.0.min.js" />
     <Content Include="Scripts\lib\soundjs-0.6.0.min.js" />
