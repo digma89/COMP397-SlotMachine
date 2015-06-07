@@ -72,6 +72,7 @@ var btn10: objects.Button;
 var row1: createjs.Bitmap;
 var row2: createjs.Bitmap;
 var row3: createjs.Bitmap;
+var line: createjs.Bitmap;
 
 // Preloader Function
 function preload() {
@@ -124,7 +125,7 @@ function gameLoop() {
 function main() {
 
     console.log("Game is Running");
-    //load the User interface
+    //load the UI
     createUI();
 
 }
@@ -184,6 +185,12 @@ function createUI() {
     //add Bet text  creating an object from the class Text
     playerJackPotDisplay = new objects.Text(jackpot.toString(), 235.5, 155);
     stage.addChild(playerJackPotDisplay);
+
+    //add line
+    line = new createjs.Bitmap("assets/images/line.fw.png");
+    line.x = 81;
+    line.y = 283;
+    stage.addChild(line); // Add the background to the game container
 
 
 
@@ -255,7 +262,7 @@ function spin() {
         function spinWait() {
             spinResult = Reels();
             //remove row images
-            stage.removeChild(row1, row2, row3);
+            stage.removeChild(row1, row2, row3,line);
             //add image in the row 1 
             row1 = new createjs.Bitmap(assets.getResult(spinResult[0]));
             row1.x = 96;
@@ -271,6 +278,11 @@ function spin() {
             row3.x = 327;
             row3.y = 256;
             stage.addChild(row3);
+            //add line
+            line = new createjs.Bitmap("assets/images/line.fw.png");
+            line.x = 81;
+            line.y = 283;
+            stage.addChild(line); // Add the background to the game container
             determineWinnings();
             turn++;
         }

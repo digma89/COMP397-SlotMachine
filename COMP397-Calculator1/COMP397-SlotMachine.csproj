@@ -75,9 +75,11 @@
     <Content Include="assets\images\cherry.png" />
     <Content Include="assets\images\grape.png" />
     <Content Include="assets\images\lemon.png" />
+    <Content Include="assets\images\line.fw.png" />
     <Content Include="assets\images\orange.png" />
     <Content Include="assets\images\seven.png" />
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\Diego.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
