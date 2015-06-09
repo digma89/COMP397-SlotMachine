@@ -54,6 +54,7 @@ var bars = 0;
 var lemons = 0;
 var sevens = 0;
 var blanks = 0;
+var bandera = 0;
 
 //Game Text Objects
 var playerMoneyDisplay: objects.Text;
@@ -254,42 +255,46 @@ function spin() {
     else if (playerBet <= 0) {
         alert("All bets must be a positive $ amount.");
     }
-    else if (playerBet <= playerMoney) {
+    else if (playerBet <= playerMoney && bandera == 0) {
+        //check the user can't spin again 
+        bandera = 1;
         //play sound
         createjs.Sound.play("soundSpin");
         //wait to finish the sound 
         setTimeout(spinWait, 2000);
-        function spinWait() {
-            spinResult = Reels();
-            //remove row images
-            stage.removeChild(row1, row2, row3,line);
-            //add image in the row 1 
-            row1 = new createjs.Bitmap(assets.getResult(spinResult[0]));
-            row1.x = 96;
-            row1.y = 256;
-            stage.addChild(row1);
-            //add image in the row 2 
-            row2 = new createjs.Bitmap(assets.getResult(spinResult[1]));
-            row2.x = 212;
-            row2.y = 255;
-            stage.addChild(row2);
-            //add image in the row 3 
-            row3 = new createjs.Bitmap(assets.getResult(spinResult[2]));
-            row3.x = 327;
-            row3.y = 256;
-            stage.addChild(row3);
-            //add line
-            line = new createjs.Bitmap("assets/images/line.fw.png");
-            line.x = 81;
-            line.y = 283;
-            stage.addChild(line); // Add the background to the game container
-            determineWinnings();
-            turn++;
-        }
-
+        
     } else {
         alert("Please enter a valid bet amount");
     }
+}
+
+//funtion of the spin button called by timeOut
+function spinWait() {
+    spinResult = Reels();
+    //remove row images
+    stage.removeChild(row1, row2, row3, line);
+    //add image in the row 1 
+    row1 = new createjs.Bitmap(assets.getResult(spinResult[0]));
+    row1.x = 96;
+    row1.y = 256;
+    stage.addChild(row1);
+    //add image in the row 2 
+    row2 = new createjs.Bitmap(assets.getResult(spinResult[1]));
+    row2.x = 212;
+    row2.y = 255;
+    stage.addChild(row2);
+    //add image in the row 3 
+    row3 = new createjs.Bitmap(assets.getResult(spinResult[2]));
+    row3.x = 327;
+    row3.y = 256;
+    stage.addChild(row3);
+    //add line
+    line = new createjs.Bitmap("assets/images/line.fw.png");
+    line.x = 81;
+    line.y = 283;
+    stage.addChild(line); // Add the background to the game container
+    determineWinnings();
+    turn++;
 }
 
 /* When this function is called it determines the betLine results.**************************************************
@@ -426,6 +431,7 @@ function showWinMessage() {
     //add Bet text  creating an object from the class Text
     playerBetDisplay = new objects.Text(playerBet.toString(), 238.5, 381);
     stage.addChild(playerBetDisplay);
+    bandera = 0;
     checkJackPot();
 }
 
@@ -466,7 +472,7 @@ function showLossMessage() {
     //add Bet text  creating an object from the class Text
     playerBetDisplay = new objects.Text(playerBet.toString(), 238.5, 381);
     stage.addChild(playerBetDisplay);
-    
+    bandera = 0;
 
 }
 
